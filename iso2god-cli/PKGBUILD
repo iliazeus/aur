@@ -1,0 +1,44 @@
+# Maintainer: Ilia Pozdnyakov <ilia.pozdnyakov@ya.ru>
+pkgname=iso2god-cli
+pkgver=1.3.8
+pkgrel=4
+pkgdesc="a tool to convert your Xbox360 iso to GOD files"
+arch=("any")
+url="https://github.com/iliazeus/iso2god-cli/"
+license=("unknown")
+groups=()
+depends=("mono")
+makedepends=("unzip" "gcc")
+source=(
+  "$pkgname-$pkgver.tar.gz"::"https://github.com/iliazeus/iso2god-cli/archive/refs/tags/$pkgver.tar.gz"
+  "$pkgname-$pkgver-sqlite.zip"::"https://system.data.sqlite.org/blobs/1.0.113.0/sqlite-netFx-source-1.0.113.0.zip"
+)
+noextract=("$pkgname-$pkgver-sqlite.zip")
+md5sums=("5247292370814722fa9782814cb6f1a9" "4801eda4866ff3640e0b19e0170c68a2")
+
+build() {
+  # http://blog.wezeku.com/2016/10/09/using-system-data-sqlite-under-linux-and-mono/
+  mkdir -p "$pkgname-$pkgver-sqlite"
+  pushd "$pkgname-$pkgver-sqlite"
+  unzip -o "../$pkgname-$pkgver-sqlite.zip"
+  cd Setup
+  chmod +x compile-interop-assembly-release.sh
+  ./compile-interop-assembly-release.sh
+  popd
+
+  cd "$pkgname-$pkgver"
+  xbuild /p:Configuration=Release
+}
+
+package() {
+  install -d "$pkgdir/opt" "$pkgdir/usr/bin"
+
+  cp -r "$pkgname-$pkgver/bin/Release/" "$pkgdir/opt/iso2god-cli"
+  cp "$pkgname-$pkgver-sqlite/bin/2013/Release/bin/libSQLite.Interop.so" "$pkgdir/opt/iso2god-cli"
+
+  cat >"$pkgdir/usr/bin/iso2god" <<EOF
+#!/bin/bash
+mono "$pkgdir/opt/iso2god-cli/Iso2God.exe" "\$@"
+EOF
+  chmod a+rx "$pkgdir/usr/bin/iso2god"
+}
