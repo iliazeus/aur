@@ -1,6 +1,6 @@
 # Maintainer: Ilia Pozdnyakov <ilia.pozdnyakov@ya.ru>
 pkgname="iso2god"
-pkgver="1.4.1"
+pkgver="1.4.2"
 pkgrel="1"
 pkgdesc="A tool to convert between Xbox 360 ISO and Games On Demand file formats"
 arch=("x86_64")
@@ -10,7 +10,7 @@ depends=()
 makedepends=("cargo-nightly")
 conflicts=("iso2god-cli")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/iliazeus/iso2god-rs/archive/refs/tags/$pkgver.tar.gz")
-md5sums=("522146f3e7dbcdf2cf4e29a5f515e46c")
+md5sums=("2461de23e9cdf737490390067b068caf")
 
 prepare() {
   cd "iso2god-rs-$pkgver"
