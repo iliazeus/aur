@@ -1,36 +1,17 @@
 # Maintainer: Ilia Pozdnyakov <ilia.pozdnyakov@ya.ru>
 pkgname="iso2god"
 pkgver="1.4.3"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="A tool to convert between Xbox 360 ISO and Games On Demand file formats"
 arch=("x86_64")
 url="https://github.com/iliazeus/iso2god-rs"
 license=("MIT")
 depends=()
-makedepends=("cargo-nightly")
+makedepends=()
 conflicts=("iso2god-cli")
-source=("$pkgname-$pkgver.tar.gz::https://github.com/iliazeus/iso2god-rs/archive/refs/tags/$pkgver.tar.gz")
-md5sums=("20ce82a3f1af537a8782b92ebe9ff77e")
-
-prepare() {
-  cd "iso2god-rs-$pkgver"
-  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
-}
-
-build() {
-  cd "iso2god-rs-$pkgver"
-  export RUSTUP_TOOLCHAIN=nightly
-  export CARGO_TARGET_DIR=target
-  cargo build --frozen --release --all-features
-}
-
-check() {
-  cd "iso2god-rs-$pkgver"
-  export RUSTUP_TOOLCHAIN=nightly
-  cargo test --frozen --all-features
-}
+source=("$pkgname-$pkgver"::"https://github.com/iliazeus/iso2god-rs/releases/download/v$pkgver/iso2god")
+md5sums=("9aac8a6ce3de074dc69020b091a6b24b")
 
 package() {
-  cd "iso2god-rs-$pkgver"
-  install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
+  install -Dm0755 "$pkgname-$pkgver" "$pkgdir/usr/bin/iso2god"
 }
