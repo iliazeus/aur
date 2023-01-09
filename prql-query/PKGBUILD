@@ -1,0 +1,17 @@
+# Maintainer: Ilia Pozdnyakov <ilia.pozdnyakov@ya.ru>
+pkgname="prql-query"
+pkgver="0.0.14"
+pkgrel="1"
+pkgdesc="A tool to query and transform data with PRQL"
+arch=("x86_64")
+url="https://github.com/PRQL/prql-query"
+license=("MIT")
+depends=()
+makedepends=()
+conflicts=()
+source=("https://github.com/PRQL/prql-query/releases/download/v$pkgver/pq-x86_64-unknown-linux-gnu.tar.gz")
+md5sums=("ab4174cc4e66540c7b4ea8ba1d0dd95b")
+
+package() {
+  install -Dm0755 pq "$pkgdir/usr/bin/pq"
+}
