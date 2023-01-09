@@ -1,0 +1,17 @@
+# Maintainer: Ilia Pozdnyakov <ilia.pozdnyakov@ya.ru>
+pkgname="collada2gltf"
+pkgver="2.1.5"
+pkgrel="1"
+pkgdesc="COLLADA to glTF converter"
+arch=("x86_64")
+url="https://github.com/KhronosGroup/COLLADA2GLTF"
+license=("BSD")
+depends=()
+makedepends=()
+conflicts=()
+source=("https://github.com/KhronosGroup/COLLADA2GLTF/releases/download/v$pkgver/COLLADA2GLTF-v$pkgver-linux.zip")
+md5sums=("6f8c9e99b7c2d9c450a98864384c6016")
+
+package() {
+  install -Dm0755 COLLADA2GLTF-bin "$pkgdir/usr/bin/collada2gltf"
+}
