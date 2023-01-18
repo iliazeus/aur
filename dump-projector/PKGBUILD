@@ -1,0 +1,21 @@
+# Maintainer: Ilia Pozdnyakov <ilia.pozdnyakov@ya.ru>
+pkgname="dump-projector"
+pkgver="1.0.0"
+pkgrel="1"
+pkgdesc="A tool to extract SWF files from Flash Player Projector EXE files"
+arch=("x86_64")
+url="https://github.com/laenion/dump_projector"
+license=("unknown")
+depends=()
+makedepends=("gcc")
+conflicts=()
+source=("$pkgname-$pkgver.c"::"https://github.com/laenion/dump_projector/raw/e71b540c/dump_projector.c")
+md5sums=("6944bb8684af38b04e34c0180ba552c9")
+
+build() {
+  gcc "$pkgname-$pkgver.c" -o "$pkgname-$pkgver"
+}
+
+package() {
+  install -Dm0755 "$pkgname-$pkgver" "$pkgdir/usr/bin/dump-projector"
+}
