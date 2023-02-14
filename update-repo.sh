@@ -3,7 +3,7 @@
 set -e
 
 cp */*.pkg.tar.{zst,zst.sig} .
-git checkout gh-pages
+git checkout -f gh-pages
 repo-add --new --prevent-downgrade --verify --sign iliazeus.db.tar.gz *.pkg.tar.zst
 git add iliazeus.* *.pkg.tar.{zst,zst.sig}
 git commit --amend -m "update $(date -Is)"
