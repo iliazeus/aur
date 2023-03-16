@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Libro2
+Comment=GUI tool for organizing fb2 and epub files
+Icon=/usr/share/icons/libro2.png
+Exec=/usr/bin/libro2
+Terminal=false
+Categories=Multimedia
