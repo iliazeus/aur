@@ -1,0 +1,28 @@
+# Maintainer: Ilia Pozdnyakov <ilia.pozdnyakov@ya.ru>
+pkgname="mangadex-dl"
+pkgver="2.8.3"
+pkgrel="1"
+pkgdesc="A command-line tool to download manga from MangaDex"
+arch=("any")
+url="https://github.com/mansuf/mangadex-downloader"
+license=("MIT")
+depends=("python")
+makedepends=("python-pex")
+conflicts=()
+
+build() {
+  mkdir -p "$pkgname-$pkgver"
+  cd "$pkgname-$pkgver"
+  pex \
+    --python-shebang "/usr/bin/python" \
+    --sh-boot \
+    --compile \
+    --script mangadex-dl \
+    "mangadex-downloader==$pkgver" "py7zr" "orjson" "lxml" \
+    --output-file "mangadex-dl.pex"
+}
+
+package() {
+  cd "$pkgname-$pkgver"
+  install -Dm a+rx "mangadex-dl.pex" "$pkgdir/usr/bin/mangadex-dl"
+}
