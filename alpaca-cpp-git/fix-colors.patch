@@ -1,0 +1,13 @@
+diff --git a/chat.cpp b/chat.cpp
+index 22f0a4d..2d43dd4 100644
+--- a/chat.cpp
++++ b/chat.cpp
+@@ -765,6 +765,8 @@ void sigint_handler(int signo) {
+         if (!is_interacting) {
+             is_interacting=true;
+         } else {
++            printf("\n");
++            fflush(stdout);
+             _exit(130);
+         }
+     }
