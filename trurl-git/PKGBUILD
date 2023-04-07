@@ -1,6 +1,6 @@
 # Maintainer: Ilia Pozdnyakov <ilia.pozdnyakov@ya.ru>
 pkgname="trurl-git"
-pkgver=r80.5ed5181
+pkgver=r111.feb5de4
 pkgrel=1
 pkgdesc="command line tool for URL parsing and manipulation"
 arch=("any")
@@ -8,7 +8,7 @@ url="https://github.com/curl/urler"
 license=("MIT")
 depends=("curl")
 makedepends=("gcc" "make")
-conflicts=()
+conflicts=("trurl")
 source=("$pkgname"::"git+https://github.com/curl/urler")
 md5sums=("SKIP")
 
