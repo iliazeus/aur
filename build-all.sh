@@ -6,6 +6,6 @@ for pkg in *
 do
     [ -d $pkg ] || continue
     pushd $pkg
-    makepkg --force --syncdeps --rmdeps --clean --check --sign
+    makepkg --force --syncdeps --rmdeps --clean --check --sign --noconfirm
     popd
 done
