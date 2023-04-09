@@ -1,6 +1,6 @@
 # Maintainer: Ilia Pozdnyakov <ilia.pozdnyakov@ya.ru>
 pkgname="trurl-git"
-pkgver=r111.feb5de4
+pkgver=r126.2377fd8
 pkgrel=1
 pkgdesc="command line tool for URL parsing and manipulation"
 arch=("any")
