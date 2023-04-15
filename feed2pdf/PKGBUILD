@@ -1,6 +1,6 @@
 # Maintainer: Ilia Pozdnyakov <ilia.pozdnyakov@ya.ru>
 pkgname="feed2pdf"
-pkgver="0.2.3"
+pkgver="0.2.4"
 pkgrel="1"
 pkgdesc="a tool that collects links to web pages from an RSS feed, then renders them to PDF files with Puppeteer"
 arch=("any")
@@ -10,7 +10,7 @@ depends=("nodejs" "pdftk" "chromium")
 makedepends=()
 conflicts=()
 source=("$pkgname-$pkgver"::"https://github.com/iliazeus/feed2pdf/releases/download/v$pkgver/feed2pdf.js")
-md5sums=("33de613654f29a06ff9e07ce24f5a379")
+md5sums=("60ed904c5ad6eb0281ded971f091ee8f")
 
 package() {
   install -Dm0755 "$pkgname-$pkgver" "$pkgdir/usr/bin/feed2pdf"
