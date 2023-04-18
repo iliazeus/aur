@@ -13,6 +13,7 @@ mkdir -p "$configdir/assets"
 cp --no-clobber /opt/homer-homepage/assets/config.yml.dist "$configdir/assets/config.yml" || true
 
 mkdir -p "$cachedir/overlay-workdir" "$runtimedir/www"
+umount --quiet "$runtimedir/www" || true
 fuse-overlayfs -o "lowerdir=$configdir:/opt/homer-homepage,workdir=$cachedir/overlay-workdir" "$runtimedir/www"
 
 darkhttpd "$runtimedir/www" "$@"
