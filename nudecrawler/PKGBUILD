@@ -1,6 +1,6 @@
 # Maintainer: Ilia Pozdnyakov <ilia.pozdnyakov@ya.ru>
 pkgname="nudecrawler"
-pkgver="0.3.12"
+pkgver="0.3.17"
 pkgrel="1"
 pkgdesc="Crawl telegra.ph searching for nudes"
 arch=("any")
