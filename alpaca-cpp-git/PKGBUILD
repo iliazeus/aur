@@ -1,6 +1,6 @@
 # Maintainer: Ilia Pozdnyakov <ilia.pozdnyakov@ya.ru>
 pkgname="alpaca-cpp-git"
-pkgver=r125.a0c74a7
+pkgver=r126.899fa59
 pkgrel=1
 pkgdesc="Locally run an Instruction-Tuned Chat-Style LLM"
 arch=("any")
