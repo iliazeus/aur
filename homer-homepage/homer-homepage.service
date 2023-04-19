@@ -1,10 +1,9 @@
 [Unit]
-Description=A very simple static homepage for your server (%I)
+Description=A very simple static homepage for your server
 
 [Service]
-User=%i
 ExecStart=/usr/bin/homer-homepage --addr 127.0.0.1 --port 12345
 KillSignal=SIGINT
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=default.target
