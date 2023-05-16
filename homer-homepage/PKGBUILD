@@ -1,7 +1,7 @@
 # Maintainer: Ilia Pozdnyakov <ilia.pozdnyakov@ya.ru>
 pkgname="homer-homepage"
-pkgver="23.02.2"
-pkgrel="3"
+pkgver="23.05.1"
+pkgrel="1"
 pkgdesc="A very simple static homepage for your server"
 arch=("any")
 url="https://github.com/bastienwirtz/homer"
@@ -15,7 +15,7 @@ source=(
   "homer-homepage.service"
 )
 md5sums=(
-  "1639a36755fc5962406a2999b59ff9b3"
+  "a1876c6bf444967d6524c7d8ca702080"
   "SKIP"
   "SKIP"
 )
