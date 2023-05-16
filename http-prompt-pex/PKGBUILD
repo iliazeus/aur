@@ -1,7 +1,7 @@
 # Maintainer: Ilia Pozdnyakov <ilia.pozdnyakov@ya.ru>
 pkgname="http-prompt-pex"
 pkgver="2.1.0"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="An interactive HTTP command-line client"
 arch=("any")
 url="https://http-prompt.com/"
@@ -19,6 +19,7 @@ build() {
     --compile \
     --script http-prompt \
     "http-prompt==$pkgver" \
+    "urllib3==1.*" \
     --output-file "http-prompt.pex"
 }
 
