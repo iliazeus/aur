@@ -1,6 +1,6 @@
 # Maintainer: Ilia Pozdnyakov <ilia.pozdnyakov@ya.ru>
 pkgname="mangadex-dl"
-pkgver="2.9.0"
+pkgver="2.9.1"
 pkgrel="1"
 pkgdesc="A command-line tool to download manga from MangaDex"
 arch=("any")
