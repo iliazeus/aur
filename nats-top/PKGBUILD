@@ -1,6 +1,6 @@
 # Maintainer: Ilia Pozdnyakov <ilia.pozdnyakov@ya.ru>
 pkgname="nats-top"
-pkgver="0.6.0"
+pkgver="0.6.1"
 pkgrel="1"
 pkgdesc="A top-like tool for monitoring NATS servers"
 arch=("any")
