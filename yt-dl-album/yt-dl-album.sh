@@ -11,8 +11,10 @@ then
 fi
 
 PLAYLIST_URL="${1?}"
+shift || true
+
 OUT_DIR="${2-.}/tmp/$(xxd -ps -l 8 /dev/random)"
-shift 2 || true
+shift || true
 
 yt-dlp --yes-playlist \
   --format "aac/aac-hi/m4a/bestaudio/best" \
