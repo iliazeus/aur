@@ -1,6 +1,6 @@
 # Maintainer: Ilia Pozdnyakov <ilia.pozdnyakov@ya.ru>
 pkgname="yt-dl-album"
-pkgver="0.1.3"
+pkgver="0.1.4"
 pkgrel="1"
 pkgdesc="Download an album with yt-dlp and put it into beets database"
 arch=("any")
@@ -8,7 +8,7 @@ url="https://github.com/iliazeus/aur/tree/master/yt-dl-album"
 license=("MIT")
 depends=("beets" "ffmpeg" "vim" "yt-dlp")
 source=("yt-dl-album.sh")
-md5sums=("0c9b482d39b9ae4e62484f737baf6b16")
+md5sums=("cea4b8638745a0819367bc3a592da1d7")
 
 package() {
   install -Dm a+rx "yt-dl-album.sh" "$pkgdir/usr/bin/yt-dl-album"

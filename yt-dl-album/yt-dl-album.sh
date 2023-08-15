@@ -13,7 +13,7 @@ fi
 PLAYLIST_URL="${1?}"
 shift || true
 
-OUT_DIR="${2-.}/tmp/$(xxd -ps -l 8 /dev/random)"
+OUT_DIR="${1-.}/tmp/$(xxd -ps -l 8 /dev/random)"
 shift || true
 
 yt-dlp --yes-playlist \
