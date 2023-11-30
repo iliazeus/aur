@@ -2,7 +2,7 @@
 
 set -e
 
-USAGE="Usage: $0 <playlist_url> [out_dir] [beet_args]..."
+USAGE="Usage: BEETS_OPTS='...' YTDLP_OPTS='...' $0 <playlist_url>"
 
 if [ "$#" -eq 0 ]
 then
@@ -11,7 +11,10 @@ then
 fi
 
 PLAYLIST_URL="${1?}"
-shift || true
+shift
+
+BEETS_OPTS="${BEETS_OPTS-}"
+YTDLP_OPTS="${YTDLP_OPTS-}"
 
 OUT_DIR="./tmp/$(xxd -ps -l 8 /dev/random)"
 
@@ -20,7 +23,7 @@ yt-dlp --yes-playlist \
   --extract-audio --audio-format "m4a" \
   --embed-metadata \
   --output "$OUT_DIR/%(id)s.%(ext)s" \
-  "$@" \
-  "$PLAYLIST_URL"
+  "$PLAYLIST_URL" \
+  $YTDLP_OPTS
 
-beet import "$OUT_DIR"
+beet import "$OUT_DIR" $BEETS_OPTS
