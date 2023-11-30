@@ -13,14 +13,14 @@ fi
 PLAYLIST_URL="${1?}"
 shift || true
 
-OUT_DIR="${1-.}/tmp/$(xxd -ps -l 8 /dev/random)"
-shift || true
+OUT_DIR="./tmp/$(xxd -ps -l 8 /dev/random)"
 
 yt-dlp --yes-playlist \
   --format "aac/aac-hi/m4a/bestaudio/best" \
   --extract-audio --audio-format "m4a" \
   --embed-metadata \
   --output "$OUT_DIR/%(id)s.%(ext)s" \
+  "$@" \
   "$PLAYLIST_URL"
 
-beet import "$OUT_DIR" "$@"
+beet import "$OUT_DIR"
