@@ -1,24 +1,25 @@
 # Maintainer: Ilia Pozdnyakov <ilia.pozdnyakov@ya.ru>
 pkgname="http-prompt-pex"
 pkgver="2.1.0"
-pkgrel="2"
+pkgrel="3"
 pkgdesc="An interactive HTTP command-line client"
 arch=("any")
 url="https://github.com/httpie/http-prompt"
 license=("MIT")
 depends=("python")
-makedepends=("python-pex")
 conflicts=("http-prompt")
 
 build() {
   mkdir -p "$pkgname-$pkgver"
   cd "$pkgname-$pkgver"
-  pex \
+  python -m venv .venv
+  .venv/bin/pip install pex
+  .venv/bin/pex -v \
     --python-shebang "/usr/bin/python" \
     --sh-boot \
     --compile \
     --script http-prompt \
-    "http-prompt==$pkgver" \
+    "git+https://github.com/httpie/http-prompt@6602b81516851a3461ad204e340180ff885aa5a2#egg=http-prompt" \
     "urllib3==1.*" \
     --output-file "http-prompt.pex"
 }
@@ -27,3 +28,4 @@ package() {
   cd "$pkgname-$pkgver"
   install -Dm a+rx "http-prompt.pex" "$pkgdir/usr/bin/http-prompt"
 }
+  
