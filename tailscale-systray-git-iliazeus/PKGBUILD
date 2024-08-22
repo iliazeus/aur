@@ -5,7 +5,7 @@
 pkgname=tailscale-systray-git-iliazeus
 conflicts=('tailscale-systray-git')
 _realname=tailscale-systray
-pkgver=r32.b346e1f
+pkgver=r33.32edd8d
 pkgrel=1
 pkgdesc='Linux port of tailscale system tray menu.'
 arch=('x86_64')
