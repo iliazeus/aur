@@ -1,0 +1,45 @@
+# Maintainer: Ilia Pozdnyakov <iliazeus@proton.me>
+pkgname="punkomatic2-ruffle"
+pkgver="1.0.0"
+pkgrel="1"
+pkgdesc="A rhythm game with a customizable band"
+arch=("x86_64")
+url="https://evildoggames.com/punk-o-matic-2.html"
+license=()
+depends=("alsa-lib" "gtk3" "glibc" "gcc-libs" "glib2" "zlib" "openssl")
+makedepends=("imagemagick" "git" "cargo" "clang" "python" "java-runtime" "at-spi2-core")
+conflicts=()
+options=(!lto)
+source=(
+  "ruffle"::"git+https://github.com/iliazeus/ruffle-pom2.git"
+  "pom2.swf"::"https://archive.org/download/punk-o-matic-2_flash/Punk-O-Matic2.swf"
+  "icon.jpg"::"https://www.evildoggames.com/uploads/4/7/6/0/4760214/639955-orig_orig.jpg"
+  "launch.sh"
+  "pom2.desktop"
+)
+sha1sums=(
+  "SKIP"
+  "27495d88021641ced819d539326cd8ef14dc9aa3"
+  "b1d7f292a95bc5db9effed1897140f3abd8f1542"
+  "SKIP"
+  "SKIP"
+)
+
+prepare() {
+  cd "$srcdir/ruffle"
+  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+}
+
+build() {
+  magick icon.jpg -strip icon.png
+  cd "$srcdir/ruffle"
+  cargo build --frozen --release --bin ruffle_desktop
+}
+
+package() {
+  install -Dm a+rx "$srcdir/ruffle/target/release/ruffle_desktop" "$pkgdir/usr/lib/ruffle-punkomatic2/ruffle"
+  install -Dm a+r "$srcdir/pom2.swf" "$pkgdir/usr/lib/ruffle-punkomatic2/pom2.swf"
+  install -Dm a+rx "$srcdir/launch.sh" "$pkgdir/usr/bin/punkomatic2"
+  install -Dm a+r "$srcdir/pom2.desktop" "$pkgdir/usr/share/applications/punkomatic2.desktop"
+  install -Dm a+r "$srcdir/icon.png" "$pkgdir/usr/share/pixmaps/punkomatic2.png"
+}

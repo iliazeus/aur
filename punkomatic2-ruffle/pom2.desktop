@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Punk-o-Matic 2 (Ruffle)
+Comment=A rhythm game with a customizable band
+Exec=/usr/bin/punkomatic2
+Icon=/usr/share/pixmaps/punkomatic2.png
+Terminal=false
+Categories=Audio;Game;
+Keywords=pom;punkomatic;
