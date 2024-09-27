@@ -13,14 +13,12 @@ options=(!lto)
 source=(
   "ruffle"::"git+https://github.com/iliazeus/ruffle-pom2.git"
   "pom2.swf"::"https://archive.org/download/punk-o-matic-2_flash/Punk-O-Matic2.swf"
-  "icon.jpg"::"https://www.evildoggames.com/uploads/4/7/6/0/4760214/639955-orig_orig.jpg"
   "launch.sh"
   "pom2.desktop"
 )
 sha1sums=(
   "SKIP"
   "27495d88021641ced819d539326cd8ef14dc9aa3"
-  "b1d7f292a95bc5db9effed1897140f3abd8f1542"
   "SKIP"
   "SKIP"
 )
