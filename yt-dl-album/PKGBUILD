@@ -1,6 +1,6 @@
 # Maintainer: Ilia Pozdnyakov <iliazeus@proton.me>
 pkgname="yt-dl-album"
-pkgver="0.1.7"
+pkgver="0.1.8"
 pkgrel="1"
 pkgdesc="Download an album with yt-dlp and put it into beets database"
 arch=("any")

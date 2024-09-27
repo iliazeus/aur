@@ -23,6 +23,8 @@ yt-dlp --yes-playlist \
   "$playlist_url" \
   $ytdlp_opts
 
-beet import "$tmp_dir" $beets_opts
+beet import "$tmp_dir" --move $beets_opts
 
-rm -r "$tmp_dir"
+# this will error on non-empty directory, which is exactly what we need,
+# since `beet import` does not error on abort
+rmdir "$tmp_dir"
