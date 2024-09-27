@@ -1,8 +1,7 @@
 #!/bin/bash
+set -euo pipefail
 
-set -e
-
-USAGE="Usage: BEETS_OPTS='...' YTDLP_OPTS='...' $0 <playlist_url>"
+USAGE="Usage: YTDLP_OPTS='...' yt-dl-album <playlist_url> [beets_opts...]"
 
 if [ "$#" -eq 0 ]
 then
@@ -10,20 +9,20 @@ then
   exit 1
 fi
 
-PLAYLIST_URL="${1?}"
-shift
+playlist_url="$1"; shift
+beets_opts="$@"
+ytdlp_opts="${YTDLP_OPTS-}"
 
-BEETS_OPTS="${BEETS_OPTS-}"
-YTDLP_OPTS="${YTDLP_OPTS-}"
-
-OUT_DIR="./tmp/$(xxd -ps -l 8 /dev/random)"
+tmp_dir="./tmp/$(date -Ins)"
 
 yt-dlp --yes-playlist \
   --format "aac/aac-hi/m4a/bestaudio/best" \
   --extract-audio --audio-format "m4a" \
   --embed-metadata \
-  --output "$OUT_DIR/%(id)s.%(ext)s" \
-  "$PLAYLIST_URL" \
-  $YTDLP_OPTS
+  --output "$tmp_dir/%(id)s.%(ext)s" \
+  "$playlist_url" \
+  $ytdlp_opts
 
-beet import "$OUT_DIR" $BEETS_OPTS
+beet import "$tmp_dir" $beets_opts
+
+rm -r "$tmp_dir"
