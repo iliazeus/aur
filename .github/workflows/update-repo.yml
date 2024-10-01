@@ -1,0 +1,26 @@
+name: Update package repository
+on:
+  push: { branches: master }
+jobs:
+  build-packages:
+    runs-on: ubuntu-latest
+    container:
+      image: archlinux:base-devel
+    steps:
+      - run: |
+          echo "nobody ALL=(ALL:ALL) NOPASSWD: ALL" >> /etc/sudoers
+      - run: pacman -Syu --noconfirm git
+      - uses: actions/checkout@v4
+      - uses: robinraju/release-downloader@v1
+        with: { latest: true }
+        continue-on-error: true
+      - run: chown -R nobody:nobody .
+      - run: runuser -unobody bash update-repo.sh
+        env: { MAKEPKG_OPTS: --noconfirm }
+      - uses: softprops/action-gh-release@v2
+        with:
+          name: ${{ github.ref_name }}
+          files: |
+            packages.tar
+            packages.db.tar
+            packages.files.tar
