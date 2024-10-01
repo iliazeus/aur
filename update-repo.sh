@@ -5,7 +5,7 @@ packages=(
   dump-projector
   http-prompt-pex
   iso2god
-  punkomatic2-ruffle
+  # punkomatic2-ruffle
   tailscale-systray-git-iliazeus
   yt-dl-album
 )

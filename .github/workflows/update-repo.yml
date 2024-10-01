@@ -8,18 +8,20 @@ jobs:
       image: archlinux:base-devel
     steps:
       - run: |
-          echo "nobody ALL=(ALL:ALL) NOPASSWD: ALL" >> /etc/sudoers
+          useradd -mU build
+          echo "build ALL=(ALL:ALL) NOPASSWD: ALL" >> /etc/sudoers
       - run: pacman -Syu --noconfirm git
       - uses: actions/checkout@v4
       - uses: robinraju/release-downloader@v1
         with: { latest: true }
         continue-on-error: true
-      - run: chown -R nobody:nobody .
-      - run: runuser -unobody bash update-repo.sh
+      - run: chown -R build:build .
+      - run: runuser -ubuild bash update-repo.sh
         env: { MAKEPKG_OPTS: --noconfirm }
       - uses: softprops/action-gh-release@v2
         with:
           name: ${{ github.ref_name }}
+          draft: true
           files: |
             packages.tar
             packages.db.tar
