@@ -1,8 +1,4 @@
-*.pkg.*
 */pkg/
 */src/
-/packages.db
-/packages.db.*
-/packages.files
-/packages.files.*
-/packages.tar
+/packages.db.*.old
+/packages.files.*.old
