@@ -9,6 +9,7 @@ license=("unknown")
 depends=()
 makedepends=("gcc")
 conflicts=()
+options=(!debug)
 source=("$pkgname-$pkgver.c"::"https://github.com/laenion/dump_projector/raw/e71b540c/dump_projector.c")
 md5sums=("6944bb8684af38b04e34c0180ba552c9")
 

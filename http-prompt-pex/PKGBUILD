@@ -8,6 +8,7 @@ url="https://github.com/httpie/http-prompt"
 license=("MIT")
 depends=("python")
 conflicts=("http-prompt")
+options=(!debug)
 
 build() {
   mkdir -p "$pkgname-$pkgver"

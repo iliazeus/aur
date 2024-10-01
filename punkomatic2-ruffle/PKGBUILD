@@ -9,7 +9,7 @@ license=()
 depends=("alsa-lib" "gtk3" "glibc" "gcc-libs" "glib2" "zlib" "openssl")
 makedepends=("imagemagick" "git" "cargo" "clang" "python" "java-runtime" "at-spi2-core")
 conflicts=()
-options=(!lto)
+options=(!debug !lto)
 source=(
   "ruffle"::"git+https://github.com/iliazeus/ruffle-pom2.git"
   "pom2.swf"::"https://archive.org/download/punk-o-matic-2_flash/Punk-O-Matic2.swf"

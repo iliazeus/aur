@@ -9,6 +9,7 @@ license=("MIT")
 depends=("nodejs" "pdftk" "chromium")
 makedepends=()
 conflicts=()
+options=(!debug)
 source=("$pkgname-$pkgver"::"https://github.com/iliazeus/feed2pdf/releases/download/v$pkgver/feed2pdf.js")
 md5sums=("7635e0c19e65d7c4d544648c1dba49d9")
 

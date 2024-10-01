@@ -9,6 +9,7 @@ license=("MIT")
 depends=()
 makedepends=()
 conflicts=()
+options=(!debug)
 source=("$pkgname-$pkgver"::"https://github.com/iliazeus/iso2god-rs/releases/download/v$pkgver/iso2god-x86_64-linux")
 sha1sums=("e112bba67d98fca428791bb154b494ee021fe0a5")
 

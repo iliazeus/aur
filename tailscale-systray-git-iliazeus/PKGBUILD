@@ -13,6 +13,7 @@ url="https://github.com/iliazeus/tailscale-systray"
 license=('MIT')
 depends=('tailscale' 'libappindicator-gtk3' 'libayatana-appindicator')
 makedepends=('go' 'git' 'gcc' 'gtk3')
+options=(!debug)
 source=( 'tailscale-systray.desktop'
          'LICENSE'
          'git+https://github.com/iliazeus/tailscale-systray')
