@@ -15,10 +15,12 @@ source=(
   "pom2.swf"::"https://archive.org/download/punk-o-matic-2_flash/Punk-O-Matic2.swf"
   "launch.sh"
   "pom2.desktop"
+  "icon.jpg"
 )
 sha1sums=(
   "SKIP"
   "27495d88021641ced819d539326cd8ef14dc9aa3"
+  "SKIP"
   "SKIP"
   "SKIP"
 )
