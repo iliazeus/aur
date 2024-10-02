@@ -1,4 +1,5 @@
-*/pkg/
-*/src/
-/packages.db.*.old
-/packages.files.*.old
+/*/*.pkg.*
+/*/pkg/
+/*/src/
+/iliazeus.db*
+/iliazeus.files*

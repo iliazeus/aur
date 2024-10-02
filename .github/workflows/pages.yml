@@ -1,6 +1,6 @@
 on:
   push:
-    branches: ["master"]
+    branches: ["pages"]
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
