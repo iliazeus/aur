@@ -25,4 +25,3 @@ done
 git add -f iliazeus.db* iliazeus.files*
 git commit -m $(date -Id)
 git switch -
-git push -f origin pages
