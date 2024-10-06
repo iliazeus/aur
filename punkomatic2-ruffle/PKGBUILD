@@ -1,7 +1,7 @@
 # Maintainer: Ilia Pozdnyakov <iliazeus@proton.me>
 pkgname="punkomatic2-ruffle"
 pkgver="1.0.0"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="A rhythm game with a customizable band"
 arch=("x86_64")
 url="https://evildoggames.com/punk-o-matic-2.html"
