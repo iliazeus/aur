@@ -10,18 +10,21 @@ packages=(
   yt-dl-album
 )
 
-git branch -f pages HEAD
-git switch pages
-
 for package in "${packages[@]}"; do
-  package_files="$(makepkg ${MAKEPKG_OPTS-} --dir "$package" --packagelist)"
-  if xargs -n1 test -e <<< "$package_files"; then continue; fi
-  rm -f "$package"/*.pkg.*
-  makepkg ${MAKEPKG_OPTS-} -sc --dir "$package"
-  repo-add iliazeus.db.tar $package_files
-  git add -f $package_files
+  # TODO: can there ever be several files
+  package_file="$(makepkg ${MAKEPKG_OPTS-} --dir "$package" --packagelist)"
+  package_file_name="$(basename "${package_file}")"
+  package_full_name="${package_file_name%-*}"
+
+  if ! bsdtar -tf iliazeus.db.tar --include "$package_full_name/desc" &> /dev/null; then
+    makepkg ${MAKEPKG_OPTS-} -sc --dir "$package"
+    mv "$package_file" "_packages/$package_file_name"
+    repo-add --remove iliazeus.db.tar "_packages/$package_file_name"
+  fi
 done
 
-git add -f iliazeus.db* iliazeus.files*
+git branch -f pages HEAD
+git switch pages
+git add -f _packages/* iliazeus.db.* iliazeus.files.*
 git commit -m $(date -Id)
 git switch -
